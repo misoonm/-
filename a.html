@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأمن السيبراني: درعك الرقمي في العالم الافتراضي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --secondary: #0d47a1;
+            --accent: #f44336;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --gray: #5f6368;
+            --light-gray: #dadce0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            padding-bottom: 50px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 40px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .shield-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 12px 25px;
+            margin: 0 8px 10px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 16px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-left: 12px;
+            background: var(--primary);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .analogy-box {
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .analogy-box h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .analogy-box h3 i {
+            margin-left: 10px;
+        }
+        
+        /* List Styles */
+        .styled-list {
+            list-style-type: none;
+            margin: 20px 0;
+        }
+        
+        .styled-list li {
+            padding: 12px 0 12px 45px;
+            position: relative;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed var(--light-gray);
+        }
+        
+        .styled-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 2rem;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Table Styles */
+        .threat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .threat-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: right;
+        }
+        
+        .threat-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .threat-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .threat-table tr:hover {
+            background-color: #e3f2fd;
+        }
+        
+        .danger-cell {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .solution-cell {
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* Blockquote */
+        .quote-box {
+            background: linear-gradient(to right, #e8f5e9, #c8e6c9);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid var(--success);
+            position: relative;
+        }
+        
+        .quote-box:before {
+            content: """;
+            font-size: 5rem;
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            color: var(--success);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .quote-box p {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+        
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .tip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--warning);
+            transition: transform 0.3s ease;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .tip-card h4 {
+            color: var(--warning);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-card h4 i {
+            margin-left: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .protection-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--light);
+            padding: 10px 25px;
+            border-radius: 50px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        .protection-badge i {
+            color: var(--success);
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .threat-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="shield-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h1>الأمن السيبراني: درعك الرقمي في العالم الافتراضي</h1>
+            <p>شرح مبسط بأمثلة واقعية لحماية نفسك وعائلتك في الفضاء الرقمي</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="tab-btn active" data-tab="intro">مقدمة</button>
+            <button class="tab-btn" data-tab="basics">مفاهيم أساسية</button>
+            <button class="tab-btn" data-tab="threats">التهديدات الشائعة</button>
+            <button class="tab-btn" data-tab="phishing">التصيد الاحتيالي</button>
+            <button class="tab-btn" data-tab="protection">نصائح الحماية</button>
+        </div>
+        
+        <!-- مقدمة -->
+        <section id="intro" class="content-section active">
+            <h2 class="section-title"><i class="fas fa-home"></i> الأمن السيبراني في حياتنا</h2>
+            
+            <div class="analogy-box">
+                <h3><i class="fas fa-lightbulb"></i> تخيل معي...</h3>
+                <p>أنك تعيش في مدينة كبيرة حديثة. الأمن السيبراني هو مثل: <strong>الشرطة، نظام الإنذار في بيتك، والخزينة الحديدية في البنك</strong>، لكن لحياتك الرقمية على الإنترنت! دعنا نشرحه بلغة حياتك اليومية.</p>
+            </div>
+            
+            <h3><i class="fas fa-question-circle"></i> ما هو الأمن السيبراني؟ (التشبيه البسيط)</h3>
+            <ul class="styled-list">
+                <li>هو <strong>كل الوسائل التي تحمي أشيائك الثمينة على الإنترنت</strong>، مثل:
+                    <ul>
+                        <li><strong>معلوماتك الشخصية:</strong> (اسمك، عنوانك، رقم هاتفك، صور عائلتك) – مثل أوراقك الثبوتية في الواقع.</li>
+                        <li><strong>أموالك:</strong> (أرقام بطاقة الائتمان، حسابك البنكي، محفظتك الإلكترونية) – مثل محفظتك النقدية أو حساب التوفير.</li>
+                        <li><strong>أجهزتك:</strong> (هاتفك، كمبيوترك اللوحي، لابتوبك، حتى كاميرا المنزل الذكية) – مثل بيتك أو سيارتك.</li>
+                        <li><strong>خصوصيتك:</strong> (المحادثات على الواتساب، البحث عن مواضيع صحية، مواقع تزورها) – مثل الحديث في غرفة مغلقة.</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="quote-box">
+                <p>فكر في الأمن السيبراني على أنه: <strong>"الوعي والحذر الذي تمارسه في الشارع، ولكن تطبقه على هاتفك وحاسوبك وكل ما تفعله على الإنترنت."</strong></p>
+            </div>
+        </section>
+        
+        <!-- مفاهيم أساسية -->
+        <section id="basics" class="content-section">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> لماذا الأمن السيبراني مهم؟</h2>
+            
+            <h3><i class="fas fa-exclamation-triangle"></i> المخاطر الحقيقية في العالم الرقمي</h3>
+            <p>لأن هناك "لصوص" و"نصابين" على الإنترنت يبحثون عن فرص لسرقة أو إيذاء الناس العاديين مثلك. إليك كيف:</p>
+            
+            <table class="threat-table">
+                <tr>
+                    <th>الخطر السيبراني</th>
+                    <th>التشبيه الواقعي</th>
+                    <th>مثال حقيقي يحدث يوميًا</th>
+                </tr>
+                <tr>
+                    <td class="danger-cell">سرقة الهوية</td>
+                    <td>كأن أحدًا يسرق بطاقتك الشخصية ويقترض باسمك</td>
+                    <td>يستخدم النصاب اسمك وصورتك لفتح حساب فيسبوك مزيف ويطلب أموالًا من أصدقائك. أو يفتح قرضًا بنكيًا باسمك!</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">الاحتيال المالي</td>
+                    <td>كأن أحدًا يسرق محفظتك أو ينسخ بطاقتك البنكية</td>
+                    <td>يرسل لك رسالة "عاجل من البنك" تطلب تحديث بياناتك (بموقع مزيف)، فيدخل النصاب على حسابك ويصرف أموالك.</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">الابتزاز الإلكتروني</td>
+                    <td>كأن أحدًا يهددك بإفشاء سرّ إن لم تدفع له</td>
+                    <td>يصلك رسالة "لدينا فيديو خاص بك، ادفع أو ننشره!" (حتى لو لم يكن موجودًا) لتخويفك. أو يهدد بنشر صور مسروقة من هاتفك.</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">اختراق الأجهزة والتجسس</td>
+                    <td>كأن أحدًا يضع كاميرا خفية في غرفة نومك أو يسمع مكالماتك</td>
+                    <td>إذا اخترق أحد كاميرا المنزل الذكية الخاصة بك، قد يراقب تحركاتك أو أولادك. أو يسجل ضغطاتك على لوحة المفاتيح ليعرف كلمات سرك.</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">توقف الخدمات المهمة</td>
+                    <td>كأن أحدًا يقتحم شركة الكهرباء ويقطع التيار عن مدينتك</td>
+                    <td>قد يهاجم قراصنة أنظمة المستشفى فتتوقف سجلات المرضى، أو أنظمة البنك فلا تستخدم بطاقتك، أو أنظمة المدرسة فلا تستطيع تسديد الرسوم إلكترونيًا.</td>
+                </tr>
+            </table>
+            
+            <h3><i class="fas fa-laptop-house"></i> أمثلة من حياتك اليومية</h3>
+            <ul class="styled-list">
+                <li><strong>البنك والتسوق:</strong> عندما تشتري من موقع إلكتروني أو تستخدم تطبيق البنك، الأمن السيبراني يحمي رقم بطاقتك من السرقة.</li>
+                <li><strong>وسائل التواصل:</strong> عندما تتحدث مع أولادك على الواتساب أو تشارك صور العائلة على فيسبوك، الأمن السيبراني يساعد في حماية خصوصية هذه المحادثات والصور من المتطفلين.</li>
+                <li><strong>الخدمات الحكومية:</strong> عند تسديد فاتورة الكهرباء إلكترونيًا أو التقديم على "الضمان الاجتماعي" عبر الإنترنت، الأمن يحمي بياناتك الحساسة من الضياع أو التلاعب.</li>
+                <li><strong>الأجهزة المنزلية:</strong> هاتفك الذكي الذي به صورك ورسائلك، أو التلفزيون الذكي المتصل بالإنترنت – كلها تحتاج حماية من الاختراق.</li>
+            </ul>
+            
+            <h3><i class="fas fa-star"></i> لماذا الأمن السيبراني "ضرورة ملحة"؟</h3>
+            <ul class="styled-list">
+                <li><strong>لأن حياتنا انتقلت للعالم الرقمي:</strong> ملايين الناس يستخدمون الإنترنت للتواصل والعمل والتعلم والتسوق والترفيه يوميًا.</li>
+                <li><strong>لأن المخاطر حقيقية ومكلفة:</strong> سرقة الأموال، تدمير السمعة، انتهاك الخصوصية، توقف الخدمات الحيوية – كلها تحدث بالفعل وتسبب أضرارًا مادية ومعنوية هائلة.</li>
+                <li><strong>لأنه خط الدفاع الأول:</strong> مثلما لا تترك باب بيتك مفتوحًا أو محفظتك في الشارع، لا يجب أن تهمل حماية وجودك الرقمي.</li>
+            </ul>
+        </section>
+        
+        <!-- التهديدات الشائعة -->
+        <section id="threats" class="content-section">
+            <h2 class="section-title"><i class="fas fa-bug"></i> التهديدات السيبرانية الشائعة</h2>
+            <p>دليل شامل للتهديدات السيبرانية الشائعة بأمثلة واقعية مبسطة، حتى لو كانت هذه أول مرة تسمع فيها عن هذه المفاهيم:</p>
+            
+            <h3><i class="fas fa-fish"></i> ١. التصيد الاحتيالي (Phishing): الخداع عبر الرسائل</h3>
+            <div class="analogy-box">
+                <h3><i class="fas fa-user-secret"></i> ما هو؟</h3>
+                <p>مثل نصاب يرتدي زي شرطي ويطلب منك بطاقتك "للتحقق"، ثم يهرب بها!</p>
+            </div>
+            <p><strong>كيف يحدث؟</strong> يُرسل لك نصاب إلكتروني رسالة <strong>وهمية</strong> تبدو كـ البنك أو شركة التوصيل أو الحكومة، تحتوي على <strong>رابط أو مرفق</strong> خبيث.</p>
+            
+            <h3><i class="fas fa-virus"></i> ٢. البرامج الضارة (Malware): فيروسات تفتك بأجهزتك</h3>
+            <div class="analogy-box">
+                <h3><i class="fas fa-home"></i> ما هي؟</h3>
+                <p>مثل لص يدخل لبيتك عبر نافذة مكسورة، يسرق أغراضك أو يتجسس عليك!</p>
+            </div>
+            <p><strong>أنواعها:</strong> فيروسات تُدمر ملفاتك، برامج تجسس تسجل كلمات سرك، أحصنة طروادة تتنكر كبرنامج مفيد لكنها تخترق جهازك.</p>
+            
+            <h3><i class="fas fa-lock"></i> ٣. برامج الفدية (Ransomware): اختطاف ملفاتك مقابل المال!</h3>
+            <div class="analogy-box">
+                <h3><i class="fas fa-money-bill-wave"></i> ما هو؟</h3>
+                <p>مثل خاطف يقتحم بيتك، <strong>يقفل غرفك بأقفال حديدية</strong> ويطلب فدية ليفتحها!</p>
+            </div>
+            <p><strong>كيف يحدث؟</strong> يخترق جهازك عبر رابط خبيث أو مرفق إيميل، يُشفر جميع ملفاتك ثم يظهر لك رسالة تطلب فدية.</p>
+            
+            <h3><i class="fas fa-comment-dots"></i> ٤. الهندسة الاجتماعية (Social Engineering): التلاعب النفسي لخداعك</h3>
+            <div class="analogy-box">
+                <h3><i class="fas fa-theater-masks"></i> ما هي؟</h3>
+                <p>مثل محتال يراقبك ليعرف عاداتك، ثم يتصل بك قائلًا: "أنا محمد ابن جارك، أبي في المستشفى! أرسل لي مساعدة عاجلة!"</p>
+            </div>
+            <p><strong>الفكرة:</strong> استغلال <strong>ثقتك</strong> أو <strong>خوفك</strong> أو <strong>طيب قلبك</strong> لسرقة معلوماتك أو أموالك.</p>
+            
+            <h3><i class="fas fa-check-circle"></i> الخلاصة: هذه التهديدات حقيقية... لكن الحماية بسيطة!</h3>
+            <table class="threat-table">
+                <tr>
+                    <th>التهديد</th>
+                    <th>التشبيه الواقعي</th>
+                    <th>الحل الوقائي</th>
+                </tr>
+                <tr>
+                    <td class="danger-cell">التصيد الاحتيالي</td>
+                    <td>نصاب يرتدي زي شرطي</td>
+                    <td class="solution-cell">لا تضغط روابط غريبة</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">البرامج الضارة</td>
+                    <td>لص يدخل عبر نافذة مكسورة</td>
+                    <td class="solution-cell">شغّل مضاد فيروسات</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">برامج الفدية</td>
+                    <td>خاطف يقفل غرف بيتك</td>
+                    <td class="solution-cell">احفظ نسخة احتياطية لملفاتك</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">الهندسة الاجتماعية</td>
+                    <td>محتال يستدرجك بالكلام</td>
+                    <td class="solution-cell">لا تعط بياناتك لأي شخص</td>
+                </tr>
+            </table>
+            
+            <div class="quote-box">
+                <p>العالم الرقمي مثل المدينة: فيه أماكن آمنة وأخرى خطرة. <strong>كن كـ "حارِس شخصي" لبياناتك</strong>: اشكّ في الغريب، احفظ الأشياء الثمينة، وأغلق الأبواب الرقمية (كلمات مرور قوية)!</p>
+            </div>
+        </section>
+        
+        <!-- التصيد الاحتيالي -->
+        <section id="phishing" class="content-section">
+            <h2 class="section-title"><i class="fas fa-hook"></i> التصيد الاحتيالي: دليل البقاء آمناً</h2>
+            
+            <div class="analogy-box">
+                <h3><i class="fas fa-exclamation-circle"></i> التشبيه</h3>
+                <p>تخيل أن <strong>لصًا يرتدي زي شرطي</strong> ويطلب بطاقتك "للتحقق"! هذا هو التصيد الاحتيالي: <strong>خداعك لسرقة بياناتك عبر رسائل وهمية</strong>.</p>
+            </div>
+            
+            <h3><i class="fas fa-envelope"></i> أمثلة شائعة في العالم العربي (احذر منها!):</h3>
+            <ul class="styled-list">
+                <li><strong>"بنكك" المزيف:</strong> رسالة على الجوال: "حسابك في الراجحي معلق! [رابط] لتحديث البيانات فورًا" (الرابط يأخذك لموقع يشبه البنك، لكنه وهمي).</li>
+                <li><strong>"فواتير متأخرة":</strong> إيميل مزيف من شركة الكهرباء: "تم قطع الخدمة! سدد عبر: [رابط] لتجنب الغرامة" (الرابط يسرق بيانات بطاقتك).</li>
+                <li><strong>"مكافأة سريعة":</strong> رسالة واتساب: "مبروك! فزت بجائزة من STC. أدخل بياناتك هنا: [رابط]" (يختفي الرابط بعد سرقة المعلومات).</li>
+            </ul>
+            
+            <h3><i class="fas fa-search"></i> كيف تكتشفها؟ (علامات الخطر):</h3>
+            <table class="threat-table">
+                <tr>
+                    <th>العلامة</th>
+                    <th>مثال واقعي</th>
+                    <th>كيف تتحقق؟</th>
+                </tr>
+                <tr>
+                    <td class="danger-cell">عنوان مرسل غريب</td>
+                    <td>support@alrajhi-bank.net (بدلاً من @alrajhi.com)</td>
+                    <td>ابحث عن الموقع الرسمي للبنك في جوجل</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">روابط مشبوهة</td>
+                    <td>الرابط يظهر كـ www.alahli.com لكن عند تمرير الماوس عليه يكون www.h4ck3r.ru/alahli</td>
+                    <td>لا تضغط! انسخ الرابط والصقه في مفكرة لرؤيته كاملاً</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">أخطاء إملائية</td>
+                    <td>"عميـلنـا العـزيـز، رجـاءً سـداد الفـاتورة فـوراً"</td>
+                    <td>الشركات الكبرى لا ترسل رسائل محرجة</td>
+                </tr>
+                <tr>
+                    <td class="danger-cell">تهديد أو إلحاح</td>
+                    <td>"حسابك سيُغلق خلال ٢٤ ساعة!" أو "ادفع الآن أو ستُرفع عليك دعوى!"</td>
+                    <td>اتصل بالجهة مباشرةً على الرقم الرسمي</td>
+                </tr>
+            </table>
+            
+            <div class="quote-box">
+                <p><strong>التصيد الاحتيالي كـ "طعم في سنارة":</strong> قد يبدو الرابط كـ "هدية" أو "إنذار مهم"، لكن خلفه خطاف! <strong>خدعة واحدة تعرضك لخطر:</strong> سرقة أموالك، انتحال هويتك، اختراق حساباتك الاجتماعية.</p>
+                <p style="margin-top: 15px;">الجهات الرسمية لا تطلب بياناتك الحساسة عبر رسائل عشوائية! الوعي هو أقوى سلاح ضد النصّابين الرقميين</p>
+            </div>
+        </section>
+        
+        <!-- نصائح الحماية -->
+        <section id="protection" class="content-section">
+            <h2 class="section-title"><i class="fas fa-user-shield"></i> نصائح ذهبية للحماية</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4><i class="fas fa-link"></i> نصائح للحماية من التصيد</h4>
+                    <ul class="styled-list">
+                        <li>لا تضغط أبدًا على روابط في رسائل غير متوقعة</li>
+                        <li>تحقق من هوية المرسل بالاتصال على الرقم الرسمي</li>
+                        <li>افحص الروابط بطريقة آمنة (اضغط مطولاً على الجوال، مرر الماوس على الكمبيوتر)</li>
+                        <li>استخدم التأكيد الثنائي (2FA) لحساباتك البنكية</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-card">
+                    <h4><i class="fas fa-shield-alt"></i> حماية الأجهزة والبيانات</h4>
+                    <ul class="styled-list">
+                        <li>شغّل برنامج مكافحة فيروسات (مثل Windows Defender)</li>
+                        <li>احفظ نسخة احتياطية لملفاتك على قرص صلب خارجي أو سحابة موثوقة</li>
+                        <li>حدث أنظمة التشغيل والتطبيقات باستمرار</li>
+                        <li>استخدم كلمات مرور قوية ومختلفة لكل حساب</li>
+                    </ul>
+                </div>
+                
+                <div class="tip-card">
+                    <h4><i class="fas fa-user-check"></i> حماية من الهندسة الاجتماعية</h4>
+                    <ul class="styled-list">
+                        <li>لا تعطِ أي بيانات شخصية عبر الهاتف أو الإنترنت إلا بعد التأكد 100%</li>
+                        <li>لا تشارك تفاصيل حياتك (سفر، علاقات، مشتريات) على السوشيال ميديا علنًا</li>
+                        <li>تثقيف أفراد الأسرة وخاصة كبار السن والأطفال حول هذه المخاطر</li>
+                        <li>اشك في أي طلب غير عادي أو عاجل للغاية</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-exclamation-circle"></i> ماذا لو وقعت في الفخ؟</h3>
+            <ul class="styled-list">
+                <li><strong>غير كلمات السر فورًا</strong> لحسابك المخترق وحسابات أخرى تستخدم نفس الكلمة</li>
+                <li><strong>اتصل ببنكك</strong> لإيقاف البطاقة إذا أدخلت بياناتها</li>
+                <li><strong>بلغ الجهات المختصة:</strong>
+                    <ul>
+                        <li>في السعودية: مركز البلاغات الأمنية (990)</li>
+                        <li>عبر تطبيق <strong>معروف</strong> (وزارة الداخلية)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="quote-box">
+                <p><strong>البداية بخطوات بسيطة:</strong> كلمات مرور قوية، عدم الضغط على روابط مشبوهة، تحديث أجهزتك، والحذر مما تشاركه. هذه الخطوات هي "قفل الباب" الرقمي الذي يحميك أنت وعائلتك. العالم الرقمي رائع، ولكن كن ذكياً فيه!</p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="container">
+                <p>الأمن السيبراني ليس رفاهية، بل ضرورة في عصرنا الرقمي. حافظ على أمنك وأمن عائلتك.</p>
+                <div class="protection-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>كن حذرًا، كن آمنًا، كن ذكيًا في العالم الرقمي</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and sections
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding section
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+                
+                // Scroll to the top of the section
+                document.getElementById(tabId).scrollIntoView({behavior: 'smooth'});
+            });
+        });
+        
+        // Simple animations for elements
+        document.querySelectorAll('.tip-card, .analogy-box').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+                card.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+            });
+        });
+    </script>
+</body>
+</html>
